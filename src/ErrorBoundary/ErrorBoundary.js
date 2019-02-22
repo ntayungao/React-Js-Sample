@@ -9,6 +9,7 @@ class ErrorBoundary extends Component{
     componentDidCtch = (error, info) => {
         this.setState({hasError: true, errorMessage: error});
     }
+    
     render() 
     {
         if (this.state.hasError){
