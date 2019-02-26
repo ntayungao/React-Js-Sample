@@ -48,7 +48,6 @@ class App extends Component {
   render (){
     let persons = null;
     
-
     if (this.state.showPersons){
       persons = <Person 
           persons={this.state.persons}
