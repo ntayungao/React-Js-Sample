@@ -3,7 +3,7 @@ import React from 'react';
 
 import classes from './Cockpit.css';
 
-const cockpiy = () => {
+const cockpit = ( props ) => {
 
     const assignedClasses = [];
     let btnClass = '';
@@ -24,7 +24,7 @@ const cockpiy = () => {
         <p className={assignedClasses.join(' ')}>This is really working!</p>
         <button 
         className={btnClass}
-        onClick={this.togglePersonsHandler}>Toggle Person</button>
+        onClick={props.clicked}>Toggle Person</button>
         </div>
     );
 };

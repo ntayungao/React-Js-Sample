@@ -50,21 +50,18 @@ class App extends Component {
     
 
     if (this.state.showPersons){
-      persons = (
-        <div>
-          <Person 
+      persons = <Person 
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
-          changed={this.nameChangedHandler} />
-        </div>
-      );
-
-      
-    }    
+          changed={this.nameChangedHandler} />;
+    }
 
     return (
       <div className={classes.App}>
-        <Cockpit />
+        <Cockpit 
+        showPersons={this.state.showPersons} 
+        person={this.state.persons}
+        clicked={this.togglePersonsHandler} />
         {persons}
       </div>
     );
