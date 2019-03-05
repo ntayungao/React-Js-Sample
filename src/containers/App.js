@@ -19,7 +19,8 @@ class App extends Component {
     ],
     otherState: 'Some other value',
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props, state){
@@ -60,8 +61,13 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState ({persons: persons});
+    this.setState ((prevState, props) => {
+      return {
+        persons: persons, changeCounter: prevState.changeCounter + 1
+        };
+    });
   }
+    
 
   deletePersonHandler = (personIndex) => {
     //const persons = this.state.persons.slice();
@@ -88,7 +94,8 @@ class App extends Component {
 
     return (
       <Aux>
-        <button onClick={() => {this.setState({showCockpit: false })}}>Remove Cockpit</button>
+        <button onClick={() => {this.setState({showCockpit: false })}}>
+        Remove Cockpit</button>
         {this.state.showCockpit ? (
         <Cockpit 
         title={this.props.appTitle}
@@ -104,4 +111,4 @@ class App extends Component {
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))
 }
 
-export default App;
+export default withClass(App, classes.App);
